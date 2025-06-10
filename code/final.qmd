@@ -5,3 +5,12 @@ format: html
 
 https://github.com/misssammwoods04/ENVS-193DS_spring-2025_final
 
+```{r}
+library(tidyverse)
+library(janitor)
+library(ggplot2)
+library(here)
+library(DHARMa)
+library(ggeffects)
+```
+
