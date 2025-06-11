@@ -31,3 +31,11 @@ We found a strong correlation between annual total nitrogen laod nitrogen load (
 
 Average nitrogen load (kg year⁻¹) differed significantly among nitrogen sources. Post-hoc testing confirmed significant differences between certain categories (One-way ANOVA, F distribution, Tukey HSD post-hoc test, p = 0.02, $\alpha$ = significance level)
 
+
+
+# Problem 4
+
+## a. 
+
+
+My homework 3 visualization is a lot more detailed and creative and includes all my predictor variables while my initial visualization shows only one predictor variable. Also, my initial visualization is more straightforward because it is a simple graph while my final visualization is more complex. 
