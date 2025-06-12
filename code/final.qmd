@@ -286,3 +286,9 @@ This trend suggests that Swift Parrots are more likely to occupy nest boxes loca
 
 
 My homework 3 visualization is a lot more detailed and creative and includes all my predictor variables while my initial visualization shows only one predictor variable. Also, my initial visualization is more straightforward because it is a simple graph while my final visualization is more complex. 
+
+Between all visualizations I see a similarity in predictor variables as I kept the same predictors.
+
+I don't see many patterns throughout my visualizations, especially because my initial idea included on a graph and my final visualization was a lot more creative than I initially intended. At first, I was focused on making a straight forward, logical visualization, but as I realized that I could  show my data however I wanted, I leaned towards a more creative vision.
+
+The main feedback I received was that there was not much indication of a correlation between my predictor and response variables. I knew that there was not a correlation between my variables, but I decided to show this by running a logisitic regression on my website. This test confirmed my assumption that there was no correlation between my predictors and response variables. 
