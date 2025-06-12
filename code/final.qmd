@@ -12,6 +12,7 @@ library(ggplot2)
 library(here)
 library(DHARMa)
 library(ggeffects)
+library(zoo)
 ```
 
 
@@ -44,14 +45,13 @@ sst <- read.csv("data/SBH_temperature_20241231.csv")
 ```{r}
 
 sst_clean <- sst |> # data frame
-  clean_names() |> # clean data
- select( year, month, surf_temp_c) |> # show only these columns
-   filter(
-      year == c(2018, 2019, 2020, 2021, 2022, 2023) # show only these years
-   ) |> 
-   rename(
-      mean_monthly_sst = "surf_temp_c" # change name of column 
-   )
+  clean_names() |> # clean names
+   mutate(month = factor(month.name[month], levels = month.name)) |>
+  select(year, month, surf_temp_c) |> # only show these three columns
+  filter(year == c(2018, 2019, 2020, 2021, 2022, 2023)) |> # only show these years
+  group_by(year, month) |> # groups data by year and month
+  summarise(mean_monthly_sst = mean(surf_temp_c, na.rm = TRUE),  .groups = "drop") |> # find mean sst of each month based on year
+  mutate(mean_monthly_sst = zoo::na.approx(mean_monthly_sst, na.rm = FALSE)) # change month number to name (abbreviate)
 
 ```
 
@@ -61,6 +61,30 @@ sst_clean |>
   slice_sample(n = 5) # Display 5 random rows from sst_clean
 
 str(sst_clean)# Show the structure of sst_clean
+```
+
+```{r}
+ggplot(sst_clean, 
+       aes(x = month, 
+           y = mean_monthly_sst, 
+           color = factor(year), 
+           group = year)) +
+  geom_point() +
+  geom_line() +
+  coord_cartesian(ylim = c(12, 20)) +   # Zoom y-axis to 14-20, keep all data
+  scale_y_continuous(
+    breaks = seq(14, 20, by = 2),
+    labels = c (14, 16, 18, 20)
+  ) +
+  labs(x = "Month", 
+       y = "Mean monthly sea surface temperature (\u00B0C)", 
+       color = "Year") +
+  theme_minimal() +
+   theme(
+    panel.grid.major = element_blank(),  # remove major grid lines
+    panel.grid.minor = element_blank()   # remove minor grid lines
+  )
+
 ```
 
 # Problem 4
