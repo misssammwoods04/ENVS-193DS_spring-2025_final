@@ -51,7 +51,7 @@ sst_clean <- sst |> # data frame
   clean_names() |> # clean names
    mutate(month = factor(month.name[month], levels = month.name)) |>
   select(year, month, surf_temp_c) |> # only show these three columns
-  filter(year == c(2018, 2019, 2020, 2021, 2022, 2023)) |> # only show these years
+  filter (year %in% c(2018:2023)) |> # only show these years
   group_by(year, month) |> # groups data by year and month
   summarise(mean_monthly_sst = mean(surf_temp_c, na.rm = TRUE),  .groups = "drop") |> # find mean sst of each month based on year
   mutate(mean_monthly_sst = zoo::na.approx(mean_monthly_sst, na.rm = FALSE)) # change month number to name (abbreviate)
