@@ -1,11 +1,13 @@
 ---
-title: "final"
+title: "Final"
+Author: Sam Woods
+Date: 06/12/2025
 format: html
 ---
 
 https://github.com/misssammwoods04/ENVS-193DS_spring-2025_final
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(tidyverse)
 library(janitor)
 library(ggplot2)
@@ -39,13 +41,13 @@ Average nitrogen load (kg year⁻¹) differed significantly among nitrogen sourc
 # Problem 2
 
 ```{r}
-sst <- read.csv("data/SBH_temperature_20241231.csv")
+sst <- read.csv("SBH_temperature_20241231.csv")
 ```
 
 
 ## a.
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 
 sst_clean <- sst |> # data frame
   clean_names() |> # clean names
@@ -59,14 +61,14 @@ sst_clean <- sst |> # data frame
 ```
 
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 sst_clean |> 
   slice_sample(n = 5) # Display 5 random rows from sst_clean
 
 str(sst_clean)# Show the structure of sst_clean
 ```
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 ggplot(sst_clean, 
        aes(x = month, # x axis
            y = mean_monthly_sst, # y-axis
@@ -99,8 +101,8 @@ ggplot(sst_clean,
 # Problem 3
  
 
-```{r}
-nest_boxes <- read_csv("data/occdist.csv")
+```{r, message=FALSE, warning=FALSE}
+nest_boxes <- read_csv("occdist.csv")
 
 clean_nest_boxes <- nest_boxes |> 
   clean_names() |> 
@@ -131,7 +133,7 @@ The two years are 2016 and 2019, and they differ based on the target and non-tar
 
 ## e.
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 model0 <- lm(
   sp ~ 1,
   data = clean_nest_boxes
@@ -155,7 +157,7 @@ model3 <- lm(
 
 ## f. 
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 
 par(mfrow = c(2,2))
 plot(model0)
@@ -188,7 +190,7 @@ The best model that explains total plant math includes edge distance and season 
 
 ## h. 
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 model1_predictions <- ggpredict(
   model1, # model object
   terms = c("edge_distance", "season") # predictors
@@ -200,7 +202,7 @@ model1_predictions <- ggpredict(
 ```
 
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 
 clean_nest_boxes$season <- factor(clean_nest_boxes$season, levels = c("2016", "2019")) # show seasons as separate data sets 
 
