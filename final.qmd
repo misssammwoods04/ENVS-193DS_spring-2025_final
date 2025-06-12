@@ -41,7 +41,7 @@ Average nitrogen load (kg year⁻¹) differed significantly among nitrogen sourc
 # Problem 2
 
 ```{r}
-sst <- read.csv("data/SBH_temperature_20241231.csv")
+sst <- read.csv("SBH_temperature_20241231.csv")
 ```
 
 
@@ -102,7 +102,7 @@ ggplot(sst_clean,
  
 
 ```{r, message=FALSE, warning=FALSE}
-nest_boxes <- read_csv("data/occdist.csv")
+nest_boxes <- read_csv("occdist.csv")
 
 clean_nest_boxes <- nest_boxes |> 
   clean_names() |> 
