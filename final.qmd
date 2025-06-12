@@ -1,8 +1,9 @@
 ---
 title: "Final"
-Author: Sam Woods
-Date: 06/12/2025
+author: Sam Woods
+date: 06/12/2025
 format: html
+toc: true
 ---
 
 https://github.com/misssammwoods04/ENVS-193DS_spring-2025_final
